@@ -1,0 +1,18 @@
+The H3DS dataset is available only for non-commercial research pursposes.
+
+Non-commercial means not primarily intended for or directed towards commercial advantage or monetary compensation.
+
+By using the H3DS dataset you agree with the following terms:
+
+1. The data must be used for non-commercial research and/or education purposes only.
+
+2. You agree not to copy, sell, trade, or exploit the data for any commercial purposes.
+
+3. If you will be publishing any work using this dataset, cite the original paper.
+
+@article{ramon2021h3dnet
+  author    = {Ramon, Eduard and Triginer, Gil and Escur, Janna and Pumarola, Albert and Garcia, Jaime and Giro-i-Nieto, Xavier and Moreno-Noguer, Francesc},
+  title     = {H3D-Net: Few-Shot High-Fidelity 3D Head Reconstruction},
+  journal   = {arXiv preprint arXiv:2107.12512},
+  year      = {2021},
+}
