@@ -125,13 +125,13 @@ class IDRTrainRunner():
             self.model.load_state_dict(saved_model_state["model_state_dict"])
             self.start_epoch = saved_model_state['epoch']
 
-            data = torch.load(
-                os.path.join(old_checkpnts_dir, 'OptimizerParameters', str(kwargs['checkpoint']) + ".pth"))
-            self.optimizer.load_state_dict(data["optimizer_state_dict"])
+            #data = torch.load(
+            #    os.path.join(old_checkpnts_dir, 'OptimizerParameters', str(kwargs['checkpoint']) + ".pth"))
+            #self.optimizer.load_state_dict(data["optimizer_state_dict"])
 
-            data = torch.load(
-                os.path.join(old_checkpnts_dir, self.scheduler_params_subdir, str(kwargs['checkpoint']) + ".pth"))
-            self.scheduler.load_state_dict(data["scheduler_state_dict"])
+            #data = torch.load(
+            #    os.path.join(old_checkpnts_dir, self.scheduler_params_subdir, str(kwargs['checkpoint']) + ".pth"))
+            #self.scheduler.load_state_dict(data["scheduler_state_dict"])
 
             if self.train_cameras:
                 data = torch.load(
