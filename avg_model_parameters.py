@@ -3,9 +3,9 @@ from collections import Counter
 from collections import OrderedDict
 
 # Load Model Parameters of different scans
-model1 = torch.load('baseline_scan10/checkpoints/ModelParameters/500.pth', map_location='cpu')
-model2 = torch.load('baseline_scan10/checkpoints/ModelParameters/600.pth', map_location='cpu')
-model3 = torch.load('baseline_scan10/checkpoints/ModelParameters/700.pth', map_location='cpu')
+model1 = torch.load('model_baseline_scans/baseline_scan10/checkpoints/ModelParameters/500.pth', map_location='cpu')
+model2 = torch.load('model_baseline_scans/baseline_scan6/checkpoints/ModelParameters/500.pth', map_location='cpu')
+model3 = torch.load('model_baseline_scans/baseline_scan22/checkpoints/ModelParameters/500.pth', map_location='cpu')
 
 model_state_dict1 = model1['model_state_dict']
 model_state_dict2 = model2['model_state_dict']
