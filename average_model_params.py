@@ -23,6 +23,7 @@ model_state_dict2 = model2['model_state_dict']
 sum_model = model_state_dict['implicit_network.lin0.bias'] + model_state_dict2['implicit_network.lin0.bias']
 avg_model = sum_model / 2
 
+
 print(avg_model[0], model_state_dict['implicit_network.lin0.bias'][0], model_state_dict2['implicit_network.lin0.bias'][0])
 
 
