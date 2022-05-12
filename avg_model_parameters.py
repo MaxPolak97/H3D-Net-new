@@ -22,4 +22,5 @@ avg_model = {'epoch': model1['epoch'], 'model_state_dict': avg_model_state_dict}
 print(avg_model.keys()) # dict_keys(['epoch', 'model_state_dict'])
 
 torch.save(avg_model, 'prior.pth')
+model_load = torch.load('prior.pth', map_location='cpu')
 
