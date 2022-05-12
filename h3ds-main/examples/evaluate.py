@@ -64,7 +64,7 @@ def main(h3ds_path, h3ds_token, method, output_dir):
     metrics_face = {}
     h3ds_scenes = h3ds.scenes(tags={'h3d-net'})
     #eval_dir = os.path.join(output_dir, 'evaluation', method, scene_id)
-    h3ds_scenes = ['3b5a2eb92a501d54']
+    h3ds_scenes = ['1b2a8613401e42a8']
     for scene_id in h3ds_scenes:
 
         metrics_head[scene_id] = {}
