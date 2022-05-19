@@ -1,23 +1,23 @@
 scan0:0cd3f3c0bc34a287
 scan1:1141a3328d7e9c4e - Potential Prior
-scan2:168f8ca5c2dce5bc
-scan3:1b2a8613401e42a8 - 1 Renjie - Done
+scan2:168f8ca5c2dce5bc - Final Prior
+scan3:1b2a8613401e42a8 - 1 Alon - Done
 scan4:3219815d5a1e7be3
 scan5:34f084f75deb512f
-scan6:3b5a2eb92a501d54 - 2 Alon - Done
-scan7:444ea0dc5e85ee0b - 6 Max - Done
+scan6:3b5a2eb92a501d54 - 2 Alon - Busy
+scan7:444ea0dc5e85ee0b - 6 Max - 
 scan8:52cfbad69cd83924
-scan9:5ae021f2805c0854 - 3 Denniz - Done
-scan10:5cd49557ea450c89 - 4 Max - Done
+scan9:5ae021f2805c0854 - 3 Max - 
+scan10:5cd49557ea450c89 - 4 Alon - 
 scan11:5d0e87f3adb80226
-scan12:609cc60fd416e187 - 7 Alon - Done
+scan12:609cc60fd416e187 - 7 Alon - 
 scan13:664fdf322e1dd436
 scan14:797a46725454b9c0
-scan15:7dd427509fe84baa - 5 Max - Done
-scan16:868765907f66fd85 - 8 Denniz - Done
+scan15:7dd427509fe84baa - 5 Max - 
+scan16:868765907f66fd85 - 8 Max - 
 scan17:aa0aff60ec46c1e6
 scan18:aead77090d2f4b87
 scan19:b7ee2fbadbb02a8f
-scan20:e98bae39fad2244e - 9 Renjie - Done
+scan20:e98bae39fad2244e - 9 Alon - 
 scan21:eef826f0c1f6deb0
-scan22:f7e930d8a9ff2091 - 10 Alon - Done
+scan22:f7e930d8a9ff2091 - 10 Alon - 
