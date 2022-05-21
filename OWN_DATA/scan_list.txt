@@ -13,8 +13,8 @@ scan11:5d0e87f3adb80226
 scan12:609cc60fd416e187 - 7 Alon - 
 scan13:664fdf322e1dd436
 scan14:797a46725454b9c0
-scan15:7dd427509fe84baa - 5 Max - Busy
-scan16:868765907f66fd85 - 8 Max - 
+scan15:7dd427509fe84baa - 5 Max - Done
+scan16:868765907f66fd85 - 8 Max - Done
 scan17:aa0aff60ec46c1e6
 scan18:aead77090d2f4b87
 scan19:b7ee2fbadbb02a8f
