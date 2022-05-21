@@ -7,13 +7,13 @@ scan5:34f084f75deb512f
 scan6:3b5a2eb92a501d54 - 2 Alon - Done
 scan7:444ea0dc5e85ee0b - 6 Max - Done
 scan8:52cfbad69cd83924
-scan9:5ae021f2805c0854 - 3 Max - Busy
+scan9:5ae021f2805c0854 - 3 Max - Done
 scan10:5cd49557ea450c89 - 4 Alon - 
 scan11:5d0e87f3adb80226
 scan12:609cc60fd416e187 - 7 Alon - 
 scan13:664fdf322e1dd436
 scan14:797a46725454b9c0
-scan15:7dd427509fe84baa - 5 Max - 
+scan15:7dd427509fe84baa - 5 Max - Busy
 scan16:868765907f66fd85 - 8 Max - 
 scan17:aa0aff60ec46c1e6
 scan18:aead77090d2f4b87
