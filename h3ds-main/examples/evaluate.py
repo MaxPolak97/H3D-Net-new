@@ -70,9 +70,9 @@ def main(h3ds_path, h3ds_token, method, output_dir):
     # h3ds_scenes = ['5cd49557ea450c89']    # scan 10
     # h3ds_scenes = ['7dd427509fe84baa']    # scan 15
     # h3ds_scenes = ['444ea0dc5e85ee0b']    # scan 7
-    h3ds_scenes = ['609cc60fd416e187']    # scan 12
-    # h3ds_scenes = ['868765907f66fd85']    # scan 16
-    # h3ds_scenes = ['e98bae39fad2244e']    # scan 20
+    # h3ds_scenes = ['609cc60fd416e187']    # scan 12
+    h3ds_scenes = ['868765907f66fd85']    # scan 16
+    #h3ds_scenes = ['e98bae39fad2244e']    # scan 20
     # h3ds_scenes = ['f7e930d8a9ff2091']    # scan 22
 
     for scene_id in h3ds_scenes:
