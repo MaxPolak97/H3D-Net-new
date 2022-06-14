@@ -19,7 +19,7 @@ The image below shows the process used by H3D-Net. The training and inference pr
 
 While trying to reproduce the original H3D-Net paper, we realised it was extremely difficult to implement the DeepSDF prior. That's when we came up with an idea to instead just use a single IDR prior, this would mean less training time for the prior model and hopefully a comparable result to the final H3D-Net implementation.  
 
-We will pre-train an IDR model to a particular number of epochs to create a rough human head reference that is not too detailed or too simple and use that as prior when training on a new sample. This embarassingly simple prior has has shown good results and on par performance compared to the original  H3D-Net method that uses IDR with a DeepSDF prior. Due to the complexity and heavy training required to make the DeepSDF prior, it's more than welcome to make this process easier. The simple prior we used is based on 500 epoch training for one scan. Our method is tested on H3DS dataset for 10 different scans which was also used in the results of the H3D-Net paper. Because in their paper it was already concluded that the use of the DeepSDF prior outperforms IDR from scratch for few-shots 3D Head Reconstruction, we will consider only the few-shot scenario (3 views).
+We will pre-train an IDR model to a particular number of epochs to create a rough human head reference that is not too detailed or too simple and use that as prior when training on a new sample. This embarassingly simple prior has shown good results and on par performance compared to the original  H3D-Net method that uses IDR with a DeepSDF prior. Due to the complexity and heavy training required to make the DeepSDF prior, it's more than welcome to make this process easier. The simple prior we used is based on 500 epoch training for one scan. Our method is tested on H3DS dataset for 10 different scans which was also used in the results of the H3D-Net paper. Because in their paper it was already concluded that the use of the DeepSDF prior outperforms IDR from scratch for few-shots 3D Head Reconstruction, we will consider only the few-shot scenario (3 views).
 
 ## Methods
 To use a pre-trained prior as input for IDR method for a new scan. We have to copy the .ply file (learnable paramters of all layers) to the folder of the new scan. 
@@ -66,8 +66,10 @@ Once finished training a specific view on a specific scene, we need to generate 
 python evaluation/eval.py  --conf ./confs/H3D_fixed_cameras_3.conf --scan_id SCAN_ID
 ```
 
+We trained all models with a non-decaying learning rate of $1.0e^{-4}$ and 2000 epochs ontop of the prior.
+
 ## Initial Experiments 
-In our first experiment, we have chosen 3 different scans from the H3DS dataset that could be used as a pre-trained prior. Note that only the prior is trained on 32 views as it will allow for more details of the head reconstruction to be rendered and preserving the facial features of the ground truth. To check the effect of the number of epochs of pre-training a certain prior, we will examine the results for a new scan. For this experiment, we have used scan 1, 2 and 10 as prior and evaluated it on scan 3. Because scan 1, 2 and 10 are all men with not much hair, we used scan 3 which is woman to check wehther it generalizes well to a different gender. Figure 2 shows Scan 2 as the prior, and the differences associated with this prior based on how many epochs it was trained for.  
+In our first experiment, we have chosen 3 different scans from the H3DS dataset that could be used as a pre-trained prior. Note that only the prior is trained on 32 views as it will allow for more details of the head reconstruction to be rendered and preserving the facial features of the ground truth. To check the effect of the number of epochs of pre-training a certain prior, we will examine the results for a new scan. For this experiment, we have used scan 1, 2 and 10 as prior and evaluated it on scan 3. Because scan 1, 2 and 10 are all men with not much hair, we used scan 3 which is woman to check wehther it generalizes well to a different gender. Figure 2 shows Scan 2 as the prior, and the differences associated with this prior based on how many epochs it was trained for. You can observe slight improvements in facial details of the prior as the number of epochs increases.  
 
 ![](https://i.imgur.com/zpTHkBu.png)
 *Figure 2: Scan 2 Prior trained at different Epochs*
@@ -75,9 +77,9 @@ In our first experiment, we have chosen 3 different scans from the H3DS dataset 
 As can be seen in Table 1 below, the amount of epochs the prior is pre-trained for introduces a different relationship depending on the prior that is chosen. 
 - For **scan 10**, it shows a trade-off between the average surface error in millimeters for the face and head depending on the number of epochs trained. Low face error but larger head error for the 500 epoch prior. Likewise, high face error but lower head error for the 2000 epoch prior. 
 - For **scan 1**, it looks like that both head and face metric are independent on the number of epochs used.
-    -  For **scan 2**, it shows to have relatively low face and head error at 500 epochs. However, both the errors increase with the higher number of epochs pre-trained prior.
+-  For **scan 2**, it shows to have relatively low face and head error at 500 epochs. However, both the errors increase with the higher number of epochs pre-trained prior.
 
-
+There seems to be no real structure that can be deduced by this ibservation, except that for the prior trained on 500 epochs, the facial error tended to be less, therefore we decided to train our prior for 500 epochs, as we were more interested in facial detail than the head.
 
 This face/head metric was first introduced in the H3D-Net paper to compare the performance between H3D-Net and IDR methods. The lower the value the better the result.
 
@@ -147,7 +149,7 @@ We will continue the final evaluation using the **scan 2 prior pre-trained on 50
 
 
 ## Results
-In this section, we disuss the results of training IDR on the H3DS dataset for 10 different scans using our simple prior of scan 2 trained for 500 epochs. In the paper of H3D-Net, only the average of the 10 different scans was shown, therefore we also show only the average result on all 10 scans. Table 2 below shows these results. To see the results per scan, please look at the images provided in the Appendix.
+In this section, we disuss the results of training IDR on the H3DS dataset for 10 different scans using our simple prior of scan 2 trained for 500 epochs and only using 3 views. In the paper of H3D-Net, only the average of the 10 different scans was shown, therefore we also show only the average result on all 10 scans. Table 2 below shows these results. To see the results per scan, please look at the images provided in the Appendix.
 
 We can see that our method performs on par to H3D-Net for the face metric and outperforms H3D-Net for the head metric. However, we can see a lot of variance for the head metric, see figure 4. 
 
@@ -167,10 +169,13 @@ In the file `data_results.py` you can find all individual results for each scan.
 
 *Figure 4: **BaseH3D-Net** results of the evaluated 10 subjects in the H3DS dataset*
 
-Figure 5 below shows the drastic improvement that our method can have over a simple IDR method. In order to get these results, the "Only IDR" models were trained from scratch using 3 views for 2000 epochs. Our BaseH3D method uses scan 2 trained at 500 epochs as the prior and then each scan is trained for a further 2000 epochs. As you can see the results are quite an improvement. Please see the Appendix for more scan comparisons.
+Figure 5 and Fifure 6 below show the drastic improvement that our method can have over a simple IDR method. In order to get these results, the "Only IDR" models were trained from scratch using 3 views for 2000 epochs. Our BaseH3D method uses scan 2 trained at 500 epochs as the prior and then each scan is trained for a further 2000 epochs. As you can see the results are quite an improvement. Please see the Appendix for more scan comparisons.
 
 ![](https://i.imgur.com/HdqkCvZ.png)  
 *Figure 5: Scan 6 Results*
+
+![](https://i.imgur.com/c2zlyZI.png)  
+*Figure 6: Scan 9 Results*
 
 ## Conclusion
 
@@ -178,16 +183,16 @@ To conclude this blog post, we would like to state that our method by no means c
 
 While we cannot replace the H3D-Net method with ours, we are excited that we managed to get a result almost on par with theirs. This definitely proves that using any prior would result in better performance.
 
-We would recommend using our method if you are low on computational resources, or looking for a faster training method than uding IDR alone. We would also reccoment do try at least 3 different prior scans and select the best performing one, as the resolts can vary drastically per prior.
+We would recommend using our method if you are low on computational resources, or looking for a faster training method than using IDR alone. We would also reccomend to try at least 3 different prior scans and select the best performing one, as the results can vary drastically per prior.
 
 
 ## Future Work
-We have tried to create a more general prior by averaging the learnable parameters of multiple scans (e.g. scan 1, 2 and 10), see `avg_model_parameters.py`. We think that this might even show better performance. Eventhough we nly made changes to the values of the .ply file, it gave an error, see figure 4, when training on this average prior which we were unable to solve. 
+We have tried to create a more general prior by averaging the learnable parameters of multiple scans (e.g. scan 1, 2 and 10), see `avg_model_parameters.py`. We think that this might even show better performance. Eventhough we only made changes to the values of the .ply file, it gave an error, see figure 7, when training on this average prior which we were unable to solve. 
 
 ![](https://i.imgur.com/LIiNgvJ.jpg) \
-*Figure 4: Error during training of an averaged prior*
+*Figure 7: Error during training of an averaged prior*
 
-To support our conclusion that this embarassing simple prior can outperform the original H3D-Net method on few-shot 3D head reconstruction, we should evaluate on more scans. However, this dataset contains only 22 different scans. 
+To support our conclusion that this embarassing simple prior can perform on par to the original H3D-Net method on few-shot 3D head reconstruction, we should evaluate this with more scans and more comparable date. However, this dataset contains only 22 different scans, and since we only evaluated one prior model, we cannot draw any concrete conclusions. We would like to encourage others to continue challenging complicated papers with simpler methods.  
 
 ## Contributions
 
