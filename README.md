@@ -3,7 +3,11 @@ The goal of this blog post is to propose a new model, so-called BaseH3D-Net, tha
 
 Click [here](https://hackmd.io/7VpIn0GFTTCApcEB_wX31A?view) to view this blog post online. 
 
-For those who are new to these topic, click [here](https://hackmd.io/@Group3-H3D-Net/BJqxCkmm9) to check our reproducibility project of H3D-Net in which we explains the methods in more detail.
+For those who are new to these topic, click [here](https://hackmd.io/@Group3-H3D-Net/BJqxCkmm9) to check our reproducibility project of H3D-Net in which we explains the methods in more detail.  
+
+## Authors
+Alon Dawe     - 5603250  
+Max Polak     - 4570677  
 
 ## Introduction
 
@@ -149,7 +153,7 @@ We will continue the final evaluation using the **scan 2 prior pre-trained on 50
 
 
 ## Results
-In this section, we disuss the results of training IDR on the H3DS dataset for 10 different scans using our simple prior of scan 2 trained for 500 epochs and only using 3 views. In the paper of H3D-Net, only the average of the 10 different scans was shown, therefore we also show only the average result on all 10 scans. Table 2 below shows these results. To see the results per scan, please look at the images provided in the Appendix.
+In this section, we disuss the results of training IDR on the H3DS dataset for 10 different scans using our simple prior of scan 2 trained for 500 epochs and only using 3 views. In the paper of H3D-Net, only the average of the 10 different scans was shown, therefore we also show only the average result on all 10 scans. Table 2 below shows these results. To see the results per scan, please look at the images provided in the Appendix. Training the prior on 32 images took approximately 4 hours and to train one scan for 2000 epochs with the prior, it took approximately 2 hours per scan. After the initial experiments were completed we trained for almost 20 hours for all 10 scans. All together we believe we trained for about 30 hours. 
 
 We can see that our method performs on par to H3D-Net for the face metric and outperforms H3D-Net for the head metric. However, we can see a lot of variance for the head metric, see figure 4. 
 
