@@ -1,6 +1,0 @@
-right_eye 105262
-left_eye 104460
-nose_base 182631
-right_lips 7596
-left_lips 35748
-nose_tip 7714
